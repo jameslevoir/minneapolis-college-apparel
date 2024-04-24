@@ -1,0 +1,315 @@
+@font-face {
+  font-family: "Univers-Regular";
+  src: url(./fonts/univers/UniversRegular.ttf);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Univers-Regular", sans-serif;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+body {
+  transition: padding-top 0.25s;
+  min-height: 100vh;
+  padding-top: 91px;
+  background-color: #2E3561;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: url(./images/background-image/grid-background.svg);
+  background-size: 100px;
+}
+body.show {
+  padding-top: 200px;
+}
+body::before {
+  content: "";
+  z-index: 2;
+  border-top: dashed 2px #E4EAF6;
+  border-right: dashed 2px #E4EAF6;
+  position: fixed;
+  height: 100px;
+  width: 97vw;
+  align-self: flex-start;
+}
+
+header {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 91px;
+  background-color: #99AEDA;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.25);
+  transition-duration: 0.25s;
+  transition-property: height;
+}
+header #navbar {
+  display: none;
+}
+header #navbar ul li {
+  transition-property: color;
+  transition-duration: 0.25s;
+}
+header #logo {
+  width: 100%;
+  padding: 31px 15px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+header #mobile-lines {
+  width: 40px;
+  cursor: pointer;
+  transition: filter 0.25s;
+}
+header #mobile-lines:hover {
+  filter: brightness(2);
+}
+header #logo-text {
+  max-width: 200px;
+  cursor: pointer;
+}
+header #needle {
+  transition: top 0.25s;
+  position: fixed;
+  height: 75px;
+  top: 195px;
+  left: calc(97vw - 2px);
+}
+header.show {
+  height: 200px;
+}
+header.show #navbar {
+  display: block;
+  height: 100%;
+}
+header.show #needle {
+  top: 304px;
+}
+header.show #navbar ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+}
+header.show #navbar ul li {
+  margin: 5px 0;
+  color: #E4EAF6;
+  cursor: pointer;
+  font-size: 24px;
+}
+header.show #navbar ul li:hover {
+  color: white;
+}
+
+#main-logo {
+  max-width: 538px;
+  margin: 36px 20px 0px;
+}
+
+#designers {
+  margin-top: 60px;
+  font-family: "Salted", cursive;
+  color: #99AEDA;
+  margin-bottom: 30px;
+}
+
+#gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: auto;
+  margin: 0 60px 30px;
+}
+#gallery .designer {
+  display: flex;
+  margin: 30px;
+  flex-direction: column;
+  align-items: center;
+  width: 284px;
+}
+#gallery .designer img {
+  cursor: pointer;
+  width: 100%;
+  border-radius: 30px;
+  filter: grayscale(1);
+  transition: filter 0.25s;
+}
+#gallery .designer img:hover {
+  filter: grayscale(0);
+}
+#gallery .designer h2 {
+  cursor: pointer;
+  margin-top: 10px;
+  color: #E4EAF6;
+  transition: color 0.25s;
+}
+#gallery .designer h2:hover {
+  color: #99AEDA;
+}
+
+footer {
+  box-shadow: 0px -15px 15px rgba(0, 0, 0, 0.25);
+  padding-top: 15px;
+  height: 218px;
+  width: 100vw;
+  margin-top: auto;
+  background-color: #E4EAF6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+footer ul {
+  margin-top: 10px;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+footer ul li {
+  margin: 0px 10px;
+  cursor: pointer;
+  transition: color 0.25s;
+}
+footer ul li:hover {
+  color: #99AEDA;
+}
+footer #school-logo {
+  width: 100px;
+  margin-top: 40px;
+}
+
+#designer-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: #E4EAF6;
+  text-align: center;
+}
+#designer-page #name {
+  margin-top: 30px;
+  font-size: 48px;
+}
+#designer-page #collection-name {
+  font-family: "Salted", cursive;
+  color: #99AEDA;
+}
+#designer-page #collection-gallery {
+  margin-top: 15px;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#designer-page #collection-gallery img {
+  max-width: 250px;
+  margin: 10px 25px;
+  border-radius: 30px;
+}
+#designer-page #flex-horizontal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 40px;
+}
+#designer-page #flex-horizontal #designer-headshot {
+  width: 250px;
+  border-radius: 30px;
+}
+#designer-page #flex-horizontal #flex-vertical {
+  max-width: 650px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+#designer-page #flex-horizontal #flex-vertical #bio, #designer-page #flex-horizontal #flex-vertical #statement {
+  padding: 10px 0;
+}
+#designer-page #flex-horizontal #flex-vertical #bio h2, #designer-page #flex-horizontal #flex-vertical #statement h2 {
+  font-size: 30px;
+  margin-bottom: 4px;
+}
+
+@media (min-width: 900px) {
+  header {
+    height: 91px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 83px;
+  }
+  header #logo {
+    padding: 0px;
+  }
+  header #mobile-lines {
+    display: none;
+  }
+  header #logo-text {
+    max-width: 356px;
+    cursor: pointer;
+  }
+  header #navbar {
+    display: block;
+  }
+  header #navbar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 330px;
+    list-style-type: none;
+  }
+  header #navbar ul li {
+    transition: color 0.25s;
+    color: #E4EAF6;
+    cursor: pointer;
+    font-size: 24px;
+  }
+  header #navbar ul li:hover {
+    color: white;
+  }
+  header #needle {
+    position: fixed;
+    height: 75px;
+    top: 195px;
+  }
+  #designer-page #collection-gallery img {
+    max-width: 400px;
+  }
+  #designer-page #flex-horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 40px;
+  }
+  #designer-page #flex-horizontal #designer-headshot {
+    width: 250px;
+  }
+  #designer-page #flex-horizontal #flex-vertical {
+    padding: 40px;
+    max-width: 642px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
