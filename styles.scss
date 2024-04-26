@@ -73,10 +73,11 @@ header {
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             list-style-type: none;
             li {
+                transition: color $transition-time;
                 margin: 5px 0;
                 color: $off-white;
                 cursor: pointer;
@@ -119,10 +120,6 @@ header {
             top: 304px;
         }
         height: 200px;
-        #navbar {
-            display: block;
-            opacity: 1;
-        }
     }
 }
 
