@@ -64,10 +64,28 @@ header {
     align-items: center;
     box-shadow: 0px 15px 15px rgba(0, 0, 0, .25);
     #navbar {
-        display: none;
-        ul li {
-            transition-property: color;
-            transition-duration: $transition-time;
+        overflow: hidden;
+        height: 0px;
+        opacity: 0;
+        transition-property: opacity height;
+        transition-duration: $transition-time;
+        ul {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            list-style-type: none;
+            li {
+                transition: color $transition-time;
+                margin: 5px 0;
+                color: $off-white;
+                cursor: pointer;
+                font-size: 24px;
+                &:hover {
+                    color: white;
+                }
+            }
         }
     }
     #logo {
@@ -79,10 +97,6 @@ header {
     #mobile-lines {
         width: 40px;
         cursor: pointer;
-        transition: filter $transition-time;
-        &:hover {
-            filter: brightness(2);
-        }
     }
     #logo-text {
         max-width: 200px;
@@ -99,30 +113,13 @@ header {
     transition-property: height;
     &.show {
         #navbar {
-            display: block;
             height: 100%;
+            opacity: 1;
         }
         #needle {
             top: 304px;
         }
         height: 200px;
-        #navbar ul {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            list-style-type: none;
-            li {
-                margin: 5px 0;
-                color: $off-white;
-                cursor: pointer;
-                font-size: 24px;
-                &:hover {
-                    color: white;
-                }
-            }
-    }
     }
 }
 
@@ -132,19 +129,32 @@ header {
 }
 
 #designers {
-    margin-top: 60px;
+    margin: 60px 0 30px;
     font-family: "Salted", cursive;
     color: $light-blue;
-    margin-bottom: 30px;
 }
 
 #gallery {
     display: flex;
+    flex-grow: 1;
     justify-content: center;
     flex-wrap: wrap;
-    width: auto;
+    width: 100vw;
     margin: 0 60px 30px;
     .designer {
+        position: relative;
+        ::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: -25px;
+            z-index: -1;
+            width: 284px;
+            height: 554px;
+            background-color: $light-blue;
+            border-radius: 40px;
+            opacity: .15;
+        }
         display: flex;
         margin: 30px;
         flex-direction: column;
@@ -162,7 +172,7 @@ header {
         }
         h2 {
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 30px;
             color: $off-white;
             transition: color $transition-time;
             &:hover {
@@ -177,7 +187,6 @@ footer {
     padding-top: 15px;
     height: 218px;
     width: 100vw;
-    margin-top: auto;
     background-color: $off-white;
     display: flex;
     flex-direction: column;
@@ -206,8 +215,8 @@ footer {
 // DESIGNER PAGES
 #designer-page {
     width: 100%;
-    height: 100%;
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -234,6 +243,19 @@ footer {
         }
     }
     #flex-horizontal {
+        position: relative;
+        &::before {
+            content: '';
+            border-radius: 40px;
+            opacity: .15;
+            position: absolute;
+            z-index: -1;
+            left: calc(50% - 150px);
+            top: 65px;
+            height: 494px;
+            width: 250px;
+            background-color: $light-blue;
+        }
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -243,6 +265,7 @@ footer {
             border-radius: 30px;
         }
         #flex-vertical {
+            padding-top: 20px;
             #bio, #statement {
                 padding: 10px 0;
                 h2 {
@@ -258,9 +281,86 @@ footer {
     }
 }
 
+// SHOW PAGE
+#show-title {
+    color: $light-blue;
+    font-family: "Salted", cursive;
+    padding-top: 50px;
+}
+#show {
+    #main-logo {
+        filter: opacity(.5);
+    }
+    width: 100%;
+    flex-grow: 1;
+    padding: 100px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    a {
+        text-decoration: none;
+        color: $off-white;
+        transition: color $transition-time;
+        &:hover {
+            color: $light-blue;
+        }
+    }
+}
+
+// CREDITS PAGE
+#credits-title {
+    color: $light-blue;
+    font-family: "Salted", cursive;
+    padding-top: 50px;
+}
+#credits {
+    width: 100%;
+    height: auto;
+    flex-grow: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    ul {
+        list-style-type: none;
+        color: $off-white;
+        margin-bottom: 30px;
+        li {
+            padding: 2px 0px;
+            font-size: 20px;
+        }
+    }
+    h2 {
+        font-size: 30px;
+        color: $light-blue;
+    }
+    .column {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+#credits-footer {
+    color: $off-white;
+    font-size: 16px;
+    padding: 20px 0px;
+}
+
 // Larger screens
 @media (min-width: 900px) {
+    body{
+        transition: none;
+        &::before {
+            transition: none;
+        }
+    }
+
     header {
+        transition: none;
         height: 91px;
         flex-direction: row;
         justify-content: space-between;
@@ -279,12 +379,18 @@ footer {
         #navbar {
             display: block;
         }
-        #navbar ul {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            width: 330px;
-            list-style-type: none;
+        #navbar {
+            transition: none;
+            flex-shrink: 0;
+            opacity: 1;
+            height: auto;
+            ul {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 330px;
+                list-style-type: none;
+            }
             li {
                 transition: color $transition-time;
                 color: $off-white;
@@ -296,6 +402,7 @@ footer {
             }
         }
         #needle {
+            transition: none;
             position: fixed;
             height: 75px;
             top: 195px;
@@ -312,6 +419,10 @@ footer {
             flex-direction: row;
             align-items: center;
             padding: 40px;
+            &:before {
+                left: 15px;
+                top: auto
+            }
             
             #designer-headshot {
                 width: 250px;
@@ -323,6 +434,17 @@ footer {
                 display: flex;
                 flex-direction: column;
             }
+        }
+    }
+
+    // CREDITS PAGE
+    #credits {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: baseline;
+        .column {
+            justify-content: flex-start;
+            margin: 0px 15px;
         }
     }
 }
